@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs'
+import * as BABYLON from '@babylonjs/core/Legacy/legacy'
 export class AppOne {
     engine: BABYLON.Engine;
     scene: BABYLON.Scene;
