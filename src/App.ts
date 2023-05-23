@@ -1,6 +1,6 @@
 import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder } from "@babylonjs/core";
 
-export class AppOne {
+export default class App {
     engine: Engine;
     scene: Scene;
 
@@ -59,7 +59,8 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     sphere.position.y = 1;
 
     // Our built-in 'ground' shape.
-    var ground = MeshBuilder.CreateGround("ground", { width: 6, height: 6 }, scene);
+    //var ground = 
+    MeshBuilder.CreateGround("ground", { width: 6, height: 6 }, scene);
 
     return scene;
 };
