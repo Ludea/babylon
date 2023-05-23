@@ -12,7 +12,7 @@
   ],
   "devDependencies": {
     "typescript": "^5.0.4",
-    "vite": "^2.8.6"
+    "vite": "^4.3.8"
   },
   "dependencies": {
     "babylonjs": "^4.2.2"
