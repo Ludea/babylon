@@ -6,15 +6,12 @@
     "build": "tsc && vite build",
     "preview": "tsc && vite build && vite preview --host --open"
   },
-  "typeRoots": [
-    "node_modules/@types",
-    "src/@types"
-  ],
   "devDependencies": {
+    "@babylonjs/inspector": "6.4.1",
+    "@babylonjs/core": "^6.4.1",
+    "@babylonjs/loaders": "^6.4.1",
+    "react": "18.2.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
-  },
-  "dependencies": {
-    "@babylonjs/core": "^6.4.1"
   }
 }

@@ -1,4 +1,5 @@
-import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder } from "@babylonjs/core";
+import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder, SceneLoader } from "@babylonjs/core";
+import "@babylonjs/loaders/glTF";
 
 export default class App {
     engine: Engine;
@@ -30,7 +31,6 @@ export default class App {
 
 }
 
-
 var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     // this is the default code from the playground:
 
@@ -52,15 +52,8 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    // Our built-in 'sphere' shape.
-    var sphere = MeshBuilder.CreateSphere("sphere", { diameter: 2, segments: 32 }, scene);
-
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
-
-    // Our built-in 'ground' shape.
-    //var ground = 
-    MeshBuilder.CreateGround("ground", { width: 6, height: 6 }, scene);
+    SceneLoader.Append("/assets/", "ironforge.glb", scene, function (scene) {            
+    });
 
     return scene;
 };

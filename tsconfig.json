@@ -18,6 +18,9 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true
   },
+  "types": [
+    "babylonjs",
+],
   "include": [
     "./src", "vite.config.js",
   ]
