@@ -1,4 +1,4 @@
-import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder, SceneLoader } from "@babylonjs/core";
+import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, SceneLoader, ActionManager, ExecuteCodeAction } from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 
 export default class App {
@@ -28,32 +28,56 @@ export default class App {
             this.scene.render();
         });
     }
-
 }
 
 var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
-    // this is the default code from the playground:
 
-    // This creates a basic Babylon Scene object (non-mesh)
     var scene = new Scene(engine);
 
-    // This creates and positions a free camera (non-mesh)
     var camera = new FreeCamera("camera1", new Vector3(0, 5, -10), scene);
-
-    // This targets the camera to scene origin
     camera.setTarget(Vector3.Zero());
 
-    // This attaches the camera to the canvas
     camera.attachControl(canvas, true);
 
-    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
     var light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
-
-    // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    SceneLoader.Append("/assets/", "ironforge.glb", scene, function (scene) {            
+    let character: any ;
+    SceneLoader.ImportMeshAsync(null, "assets/", "ironforge.glb", scene, function (scene) {            
+    });
+    SceneLoader.ImportMeshAsync(null, "assets/", "dwarf.glb", scene).then((result) => {
+        character = result.meshes[0];
+    });
+
+    scene.actionManager = new ActionManager(scene);
+
+    let inputMap: any = {};
+    scene.actionManager.registerAction(new ExecuteCodeAction(ActionManager.OnKeyDownTrigger, (evt) => {
+        inputMap[evt.sourceEvent.key] = evt.sourceEvent.type == "keydown";
+    }));
+    scene.actionManager.registerAction(new ExecuteCodeAction(ActionManager.OnKeyUpTrigger, (evt) => {
+        inputMap[evt.sourceEvent.key] = evt.sourceEvent.type == "keyup";
+    }));
+
+    scene.onBeforeRenderObservable.add(() => {
+        updateFromKeyboard(inputMap, character);
     });
 
     return scene;
 };
+
+const updateFromKeyboard = (inputMap: any, player: any) => {
+    if (inputMap["z"]) {
+        player.position(new Vector3(1,-1,5))
+
+    } else if (inputMap["ArrowDown"]) {
+
+    } 
+
+    if (inputMap["ArrowLeft"]) {
+
+
+    } else if (inputMap["ArrowRight"]) {
+
+    }
+}
