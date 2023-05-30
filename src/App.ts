@@ -68,7 +68,6 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
 
 const updateFromKeyboard = (inputMap: any, player: any) => {
     if (inputMap["z"]) {
-        player.position(new Vector3(1,-1,5))
 
     } else if (inputMap["ArrowDown"]) {
 
