@@ -43,8 +43,15 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     light.intensity = 0.7;
 
     let character: any ;
-    SceneLoader.ImportMeshAsync(null, "assets/", "ironforge.glb", scene, function (scene) {            
+    SceneLoader.ImportMeshAsync(null, "assets/", "ironforge.glb", scene)
+    SceneLoader.ImportMeshAsync(null, "assets/", "adt_33_41.glb", scene).then((result) => { 
+        console.log(result.meshes[0].getAbsolutePosition());     
     });
+    SceneLoader.ImportMeshAsync(null, "assets/", "adt_32_41.glb", scene);
+    SceneLoader.ImportMeshAsync(null, "assets/", "adt_32_42.glb", scene);
+    SceneLoader.ImportMeshAsync(null, "assets/", "adt_33_42.glb", scene);
+
+
     SceneLoader.ImportMeshAsync(null, "assets/", "dwarf.glb", scene).then((result) => {
         character = result.meshes[0];
     });
