@@ -1,0 +1,10 @@
+public/assets/adt_32_41.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_32_42.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_34_26.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_24_53.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_24_54.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_33_41.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/adt_33_42.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/dwarf.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/ironforge.glb filter=lfs diff=lfs merge=lfs -text
+public/assets/stormwind.glb filter=lfs diff=lfs merge=lfs -text
