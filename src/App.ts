@@ -1,4 +1,5 @@
-import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, SceneLoader, ActionManager, ExecuteCodeAction } from "@babylonjs/core";
+import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, SceneLoader, ActionManager, ExecuteCodeAction, AxesViewer } from "@babylonjs/core";
+
 import "@babylonjs/loaders/glTF";
 
 export default class App {
@@ -34,7 +35,7 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
 
     var scene = new Scene(engine);
 
-    var camera = new FreeCamera("camera1", new Vector3(0, 5, -10), scene);
+    var camera = new FreeCamera("camera1", new Vector3(788.8, 502.2, -5094.9), scene);
     camera.setTarget(Vector3.Zero());
 
     camera.attachControl(canvas, true);
@@ -43,17 +44,15 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     light.intensity = 0.7;
 
     let character: any ;
-    SceneLoader.ImportMeshAsync(null, "assets/", "ironforge.glb", scene).then((result) => { 
-        result.meshes[0].position = new Vector3(30000, 200);  
-    });
-    //TODO: loop to import mesh
-    SceneLoader.ImportMeshAsync(null, "assets/", "adt_33_41.glb", scene).then((result) => { 
-        console.log(result.meshes[0].getAbsolutePosition());     
-    });
-    SceneLoader.ImportMeshAsync(null, "assets/", "adt_32_41.glb", scene);
-    SceneLoader.ImportMeshAsync(null, "assets/", "adt_32_42.glb", scene);
-    SceneLoader.ImportMeshAsync(null, "assets/", "adt_33_42.glb", scene);
+    SceneLoader.ImportMeshAsync(null, "assets/", "ironforge.glb", scene);
 
+    for(let pos_x = 32; pos_x < 34; pos_x++){
+        for(let pos_y = 41; pos_y < 43; pos_y++){
+            SceneLoader.ImportMeshAsync(null, "assets/", "adt_" + pos_x + "_" + pos_y + ".glb", scene).then((result) => { 
+                console.log(result.meshes[0].position);   
+            });
+        }
+    }
 
     SceneLoader.ImportMeshAsync(null, "assets/", "dwarf.glb", scene).then((result) => {
         character = result.meshes[0];
@@ -70,13 +69,13 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     }));
 
     scene.onBeforeRenderObservable.add(() => {
-        updateFromKeyboard(inputMap, character);
+        updateFromKeyboard(inputMap);
     });
 
     return scene;
 };
 
-const updateFromKeyboard = (inputMap: any, player: any) => {
+const updateFromKeyboard = (inputMap: any) => {
     if (inputMap["z"]) {
 
     } else if (inputMap["ArrowDown"]) {
