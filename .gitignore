@@ -4,3 +4,5 @@ dist
 *.local
 
 yarn.lock
+
+public/assets/*.glb
