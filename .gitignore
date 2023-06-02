@@ -5,4 +5,4 @@ dist
 
 yarn.lock
 
-public/assets/*.glb
+public/assets/*
