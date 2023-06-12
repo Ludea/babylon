@@ -38,8 +38,8 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     var camera = new FreeCamera("camera1", new Vector3(788.8, 502.2, -5094.9), scene);
     camera.keysUp.push(87); // Z = 90 forward
     camera.keysDown.push(65); // S = 83 back
-    camera.keysLeft.push(83); // Q = 81 left
-    camera.keysRight.push(68); // D = 68 right
+    camera.keysLeft.push(68); // Q = 81 left
+    camera.keysRight.push(83); // D = 68 right
 
     camera.setTarget(Vector3.Zero());
 
