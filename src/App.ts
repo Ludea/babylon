@@ -54,7 +54,7 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     for(let pos_x = 32; pos_x < 34; pos_x++){
         for(let pos_y = 41; pos_y < 43; pos_y++){
             SceneLoader.ImportMeshAsync(null, "assets/", "adt_" + pos_x + "_" + pos_y + ".glb", scene).then((result) => { 
-                console.log(result.meshes[0].position);   
+                console.log(result.meshes[0].getAbsolutePosition());   
             });
         }
     }
